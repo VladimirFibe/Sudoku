@@ -1,10 +1,3 @@
-//
-//  Item.swift
-//  Sudoku
-//
-//  Created by MacService on 18.04.2024.
-//
-
 import Foundation
 import SwiftData
 

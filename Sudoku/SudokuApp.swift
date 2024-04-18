@@ -1,10 +1,4 @@
 //
-//  SudokuApp.swift
-//  Sudoku
-//
-//  Created by MacService on 18.04.2024.
-//
-
 import SwiftUI
 import SwiftData
 

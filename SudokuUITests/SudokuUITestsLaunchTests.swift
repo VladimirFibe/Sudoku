@@ -1,10 +1,3 @@
-//
-//  SudokuUITestsLaunchTests.swift
-//  SudokuUITests
-//
-//  Created by MacService on 18.04.2024.
-//
-
 import XCTest
 
 final class SudokuUITestsLaunchTests: XCTestCase {

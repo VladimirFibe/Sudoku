@@ -1,10 +1,3 @@
-//
-//  SudokuTests.swift
-//  SudokuTests
-//
-//  Created by MacService on 18.04.2024.
-//
-
 import XCTest
 
 final class SudokuTests: XCTestCase {
