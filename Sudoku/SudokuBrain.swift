@@ -2,10 +2,15 @@ import Foundation
 
 struct SudokuBrain {
     var selected = 0 { didSet { prepareLines() }}
+    var table: [Sudoku] = []
     init() {
         prepareLines()
+        for i in 0..<81 {
+            let sudoku = Sudoku(id: i, value: sample[i])
+            table.append(sudoku)
+        }
     }
-    var game = [  0, 6, 0,    0, 0, 2,    0, 0, 0,
+    var sample = [  0, 6, 0,    0, 0, 2,    0, 0, 0,
                   0, 0, 3,    0, 0, 0,    0, 0, 1,
                   4, 0, 0,    8, 6, 0,    0, 9, 0,
 
@@ -21,7 +26,7 @@ struct SudokuBrain {
 
     mutating func prepareLines() {
         lines.removeAll()
-        for i in 0..<game.count {
+        for i in 0..<table.count {
             let x = selected % 9
             let y = selected / 9
 
@@ -30,5 +35,21 @@ struct SudokuBrain {
             }
         }
         print(lines)
+    }
+
+    mutating func setValue(_ value: Int) {
+        if table[selected].value == 0 {
+            if table[selected].notes.contains(value) {
+                table[selected].notes.remove(value)
+            } else {
+                table[selected].notes.insert(value)
+            }
+        }
+    }
+
+    mutating func flipCard(_ index: Int) {
+        if table[index].value == 0, table[index].notes.count == 1, let value = table[index].notes.first {
+            table[index].value = value
+        }
     }
 }
