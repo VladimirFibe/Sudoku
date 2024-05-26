@@ -9,8 +9,7 @@ struct SudokuTableView: View {
             LazyVGrid(columns: columns, spacing: 0) {
                 ForEach(viewModel.table) { sudoku in
                     VStack {
-                        SudokuCell(sudoku: sudoku)
-                            .font(viewModel.cellFont(sudoku.value))
+                        SudokuCell(sudoku: sudoku, selectedDigit: viewModel.selectedDigit)
                             .background(viewModel.backgroundColor(index: sudoku.id))
                             .onTapGesture {
                                 viewModel.gameTapped(sudoku.id)
