@@ -13,12 +13,12 @@ struct BackgroundView: View {
                     }
 
                 }
-                .border(Color.black)
+                .border(Color(.label))
 
             }
 
         }
-        .border(Color.black)
+        .border(Color(.label))
     }
 }
 

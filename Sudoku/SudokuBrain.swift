@@ -7,11 +7,7 @@ struct SudokuBrain {
         table[selected].value
     }
     init() {
-        for i in 0..<81 {
-            let sudoku = Sudoku(id: i, isOrigin: sample[i] != 0, value: sample[i])
-            table.append(sudoku)
-        }
-        prepareLines()
+        restart()
     }
     var sample = [  0, 6, 0,    0, 0, 2,    0, 0, 0,
                   0, 0, 3,    0, 0, 0,    0, 0, 1,
@@ -63,6 +59,22 @@ struct SudokuBrain {
             lines.forEach {
                 table[$0].notes.remove(value)
             }
+        }
+    }
+
+    mutating func restart() {
+        table.removeAll()
+        for i in 0..<81 {
+            let sudoku = Sudoku(id: i, isOrigin: sample[i] != 0, value: sample[i])
+            table.append(sudoku)
+        }
+        prepareLines()
+    }
+
+    mutating func erase() {
+        if !table[selected].isOrigin {
+            table[selected].value = 0
+            table[selected].notes.removeAll()
         }
     }
 }
