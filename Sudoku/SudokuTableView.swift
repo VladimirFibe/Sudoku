@@ -42,6 +42,7 @@ struct SudokuTableView: View {
                                 Capsule().stroke()
                             }
                     }
+                    .disabled(viewModel.digitCount(digit.id) > 8)
                 }
 
             }
@@ -56,6 +57,8 @@ struct SudokuTableView: View {
     func erase() {
         viewModel.erase()
     }
+
+    
 }
 
 struct FuncButton: View {

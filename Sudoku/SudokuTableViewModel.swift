@@ -36,6 +36,10 @@ class SudokuTableViewModel: ObservableObject {
     func erase() {
         brain.erase()
     }
+
+    func digitCount(_ digit: Int) -> Int {
+        brain.digitCount(digit)
+    }
 }
 
 struct DigitButton: Identifiable {

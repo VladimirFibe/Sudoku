@@ -77,4 +77,12 @@ struct SudokuBrain {
             table[selected].notes.removeAll()
         }
     }
+
+    func digitCount(_ digit: Int) -> Int {
+        var result = 0
+        table.forEach {
+            if $0.value == digit { result += 1}
+        }
+        return result
+    }
 }
