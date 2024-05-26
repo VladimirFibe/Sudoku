@@ -41,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		86CEC5132C03531C00A0FA13 /* SudokuNetworking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SudokuNetworking; sourceTree = "<group>"; };
 		E82A5F7E2BD0B0C700B15EB2 /* Sudoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sudoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E82A5F812BD0B0C700B15EB2 /* SudokuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuApp.swift; sourceTree = "<group>"; };
 		E82A5F832BD0B0C700B15EB2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 		E82A5F752BD0B0C700B15EB2 = {
 			isa = PBXGroup;
 			children = (
+				86CEC5132C03531C00A0FA13 /* SudokuNetworking */,
 				E8A674462C034DBF002EFBBF /* README.md */,
 				E8A674472C034DC9002EFBBF /* Screenshot.png */,
 				E82A5F802BD0B0C700B15EB2 /* Sudoku */,
