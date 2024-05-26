@@ -9,3 +9,7 @@ struct Sudoku: Identifiable {
     }
     var notes: Set<Int> = []
 }
+
+struct SudokuResponse: Codable {
+    let data, easy, medium, hard: [[Int]]
+}

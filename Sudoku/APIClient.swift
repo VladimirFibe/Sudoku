@@ -1,8 +1,5 @@
-#  Sudoku
+import Foundation
 
-![](Screenshot.png)
-
-```
 final class APIClent {
     static let shared = APIClent()
     private init() {}
@@ -13,8 +10,11 @@ final class APIClent {
         let (data, _) = try await URLSession.shared.data(from: url)
         guard let result = try? JSONDecoder().decode(SudokuResponse.self, from: data)
         else { throw APIError.failedTogetData }
-        print(result)
         return result
     }
 }
-```
+
+enum APIError: Error {
+    case failedRequest
+    case failedTogetData
+}

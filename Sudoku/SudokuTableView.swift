@@ -49,6 +49,7 @@ struct SudokuTableView: View {
             .padding(.horizontal, 16)
             Spacer()
         }
+        
     }
     func restart() {
         viewModel.restart()
@@ -57,8 +58,6 @@ struct SudokuTableView: View {
     func erase() {
         viewModel.erase()
     }
-
-    
 }
 
 struct FuncButton: View {

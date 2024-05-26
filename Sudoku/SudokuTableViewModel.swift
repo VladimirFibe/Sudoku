@@ -1,6 +1,7 @@
 import SwiftUI
 
 class SudokuTableViewModel: ObservableObject {
+
     var table: [Sudoku] { brain.table }
     @Published var digits: [DigitButton] = [.init(id: 7), .init(id: 8), .init(id: 9), .init(id: 4), .init(id: 5), .init(id: 6), .init(id: 1), .init(id: 2), .init(id: 3)]
     @Published var brain = SudokuBrain()
@@ -29,8 +30,16 @@ class SudokuTableViewModel: ObservableObject {
         brain.flipCard(index)
     }
 
+    @MainActor
     func restart() {
-        brain.restart()
+        Task {
+            do {
+                let result = try await APIClent.shared.request()
+                self.brain.restart(result.hard)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
 
     func erase() {

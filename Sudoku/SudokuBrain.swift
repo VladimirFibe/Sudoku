@@ -7,19 +7,9 @@ struct SudokuBrain {
         table[selected].value
     }
     init() {
-        restart()
+        restart(sample)
     }
-    var sample = [  0, 6, 0,    0, 0, 2,    0, 0, 0,
-                  0, 0, 3,    0, 0, 0,    0, 0, 1,
-                  4, 0, 0,    8, 6, 0,    0, 9, 0,
-
-                  5, 0, 0,    0, 0, 7,    0, 0, 0,
-                  0, 1, 0,    2, 5, 0,    0, 0, 9,
-                  0, 0, 0,    0, 0, 4,    0, 2, 0,
-
-                  6, 0, 0,    5, 9, 0,    0, 8, 0,
-                  0, 0, 0,    0, 7, 0,    0, 0, 0,
-                  0, 4, 0,    0, 0, 0,    6, 0, 0]
+    var sample = [[0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 0, 0, 0, 2, 0, 0, 0, 0], [0, 9, 0, 1, 0, 0, 7, 0, 0], [0, 4, 0, 0, 0, 0, 6, 1, 9], [0, 0, 0, 0, 0, 0, 0, 0, 0], [7, 1, 0, 0, 0, 0, 8, 5, 0], [0, 0, 0, 0, 0, 8, 0, 0, 0], [1, 0, 0, 3, 0, 0, 0, 0, 0], [6, 0, 0, 0, 1, 7, 0, 0, 0]]
 
     var lines: Set<Int> = []
 
@@ -62,11 +52,14 @@ struct SudokuBrain {
         }
     }
 
-    mutating func restart() {
+    mutating func restart(_ hard: [[Int]]) {
         table.removeAll()
-        for i in 0..<81 {
-            let sudoku = Sudoku(id: i, isOrigin: sample[i] != 0, value: sample[i])
-            table.append(sudoku)
+        for i in 0..<9 {
+            for j in 0..<9 {
+                let value = hard[i][j]
+                let sudoku = Sudoku(id: 9*i+j, isOrigin: value != 0, value: value)
+                table.append(sudoku)
+            }
         }
         prepareLines()
     }
