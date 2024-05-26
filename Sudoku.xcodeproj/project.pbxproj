@@ -19,6 +19,7 @@
 		E8749EC62BD0BE6C00BDA0F8 /* SudokuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8749EC52BD0BE6C00BDA0F8 /* SudokuCell.swift */; };
 		E8749EC82BD0BF4A00BDA0F8 /* SudokuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8749EC72BD0BF4900BDA0F8 /* SudokuTableView.swift */; };
 		E8749ECA2BD0BFAD00BDA0F8 /* SudokuTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8749EC92BD0BFAD00BDA0F8 /* SudokuTableViewModel.swift */; };
+		E8A674402C02B76B002EFBBF /* SudokuBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A6743F2C02B76B002EFBBF /* SudokuBrain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		E8749EC52BD0BE6C00BDA0F8 /* SudokuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuCell.swift; sourceTree = "<group>"; };
 		E8749EC72BD0BF4900BDA0F8 /* SudokuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuTableView.swift; sourceTree = "<group>"; };
 		E8749EC92BD0BFAD00BDA0F8 /* SudokuTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuTableViewModel.swift; sourceTree = "<group>"; };
+		E8A6743F2C02B76B002EFBBF /* SudokuBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				E82A5F812BD0B0C700B15EB2 /* SudokuApp.swift */,
 				E8749EC32BD0BDFA00BDA0F8 /* Sudoku.swift */,
+				E8A6743F2C02B76B002EFBBF /* SudokuBrain.swift */,
 				E8749EC52BD0BE6C00BDA0F8 /* SudokuCell.swift */,
 				E8749EC72BD0BF4900BDA0F8 /* SudokuTableView.swift */,
 				E8749EC92BD0BFAD00BDA0F8 /* SudokuTableViewModel.swift */,
@@ -208,7 +211,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					E82A5F7D2BD0B0C700B15EB2 = {
 						CreatedOnToolsVersion = 15.3;
@@ -277,6 +280,7 @@
 				E82A5F842BD0B0C700B15EB2 /* ContentView.swift in Sources */,
 				E82A5F862BD0B0C700B15EB2 /* Item.swift in Sources */,
 				E8749EC42BD0BDFA00BDA0F8 /* Sudoku.swift in Sources */,
+				E8A674402C02B76B002EFBBF /* SudokuBrain.swift in Sources */,
 				E8749EC62BD0BE6C00BDA0F8 /* SudokuCell.swift in Sources */,
 				E82A5F822BD0B0C700B15EB2 /* SudokuApp.swift in Sources */,
 				E8749EC82BD0BF4A00BDA0F8 /* SudokuTableView.swift in Sources */,
@@ -351,6 +355,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -412,6 +417,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -439,6 +445,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sudoku/Sudoku.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Sudoku/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -475,6 +482,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sudoku/Sudoku.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Sudoku/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -510,6 +518,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
@@ -532,6 +541,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
@@ -553,6 +563,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
@@ -574,6 +585,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MACOSX_DEPLOYMENT_TARGET = 14.4;

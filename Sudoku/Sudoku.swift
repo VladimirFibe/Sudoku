@@ -4,6 +4,7 @@ struct Sudoku: Identifiable {
     let id: Int
     let value: Int
     var text: String {
-        String(value)
+        value == 0 ? "" : String(value)
     }
+
 }

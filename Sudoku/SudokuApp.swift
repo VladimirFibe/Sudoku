@@ -19,8 +19,8 @@ struct SudokuApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SudokuTableView()
         }
-        .modelContainer(sharedModelContainer)
+//        .modelContainer(sharedModelContainer)
     }
 }
