@@ -20,6 +20,7 @@
 		E8749EC82BD0BF4A00BDA0F8 /* SudokuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8749EC72BD0BF4900BDA0F8 /* SudokuTableView.swift */; };
 		E8749ECA2BD0BFAD00BDA0F8 /* SudokuTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8749EC92BD0BFAD00BDA0F8 /* SudokuTableViewModel.swift */; };
 		E8A674402C02B76B002EFBBF /* SudokuBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A6743F2C02B76B002EFBBF /* SudokuBrain.swift */; };
+		E8A674422C02FC9F002EFBBF /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A674412C02FC9F002EFBBF /* BackgroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		E8749EC72BD0BF4900BDA0F8 /* SudokuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuTableView.swift; sourceTree = "<group>"; };
 		E8749EC92BD0BFAD00BDA0F8 /* SudokuTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuTableViewModel.swift; sourceTree = "<group>"; };
 		E8A6743F2C02B76B002EFBBF /* SudokuBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuBrain.swift; sourceTree = "<group>"; };
+		E8A674412C02FC9F002EFBBF /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				E8749EC72BD0BF4900BDA0F8 /* SudokuTableView.swift */,
 				E8749EC92BD0BFAD00BDA0F8 /* SudokuTableViewModel.swift */,
 				E82A5F832BD0B0C700B15EB2 /* ContentView.swift */,
+				E8A674412C02FC9F002EFBBF /* BackgroundView.swift */,
 				E82A5F852BD0B0C700B15EB2 /* Item.swift */,
 				E82A5F872BD0B0C800B15EB2 /* Assets.xcassets */,
 				E82A5F892BD0B0C800B15EB2 /* Sudoku.entitlements */,
@@ -277,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8A674422C02FC9F002EFBBF /* BackgroundView.swift in Sources */,
 				E82A5F842BD0B0C700B15EB2 /* ContentView.swift in Sources */,
 				E82A5F862BD0B0C700B15EB2 /* Item.swift in Sources */,
 				E8749EC42BD0BDFA00BDA0F8 /* Sudoku.swift in Sources */,
@@ -447,6 +451,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Sudoku/Preview Content\"";
+				DEVELOPMENT_TEAM = 723HTEFHBA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -484,6 +489,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Sudoku/Preview Content\"";
+				DEVELOPMENT_TEAM = 723HTEFHBA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;

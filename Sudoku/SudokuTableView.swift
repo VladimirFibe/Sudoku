@@ -10,6 +10,7 @@ struct SudokuTableView: View {
                 ForEach(viewModel.table) { sudoku in
                     VStack {
                         SudokuCell(sudoku: sudoku)
+                            .font(viewModel.cellFont(sudoku.value))
                             .background(viewModel.backgroundColor(index: sudoku.id))
                             .onTapGesture {
                                 viewModel.gameTapped(sudoku.id)
@@ -23,6 +24,7 @@ struct SudokuTableView: View {
                     )
                 }
             }
+            .overlay(BackgroundView())
             .padding(4)
             LazyVGrid(columns: Array(repeating: GridItem(spacing: 10), count: 3)) {
                 ForEach(viewModel.digits) { digit in

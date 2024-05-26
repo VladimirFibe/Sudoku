@@ -3,12 +3,15 @@ import Foundation
 struct SudokuBrain {
     var selected = 0 { didSet { prepareLines() }}
     var table: [Sudoku] = []
+    var selectedDigit: Int {
+        table[selected].value
+    }
     init() {
-        prepareLines()
         for i in 0..<81 {
-            let sudoku = Sudoku(id: i, value: sample[i])
+            let sudoku = Sudoku(id: i, isOrigin: sample[i] != 0, value: sample[i])
             table.append(sudoku)
         }
+        prepareLines()
     }
     var sample = [  0, 6, 0,    0, 0, 2,    0, 0, 0,
                   0, 0, 3,    0, 0, 0,    0, 0, 1,
@@ -34,22 +37,32 @@ struct SudokuBrain {
                 lines.insert(i)
             }
         }
-        print(lines)
     }
 
     mutating func setValue(_ value: Int) {
-        if table[selected].value == 0 {
-            if table[selected].notes.contains(value) {
-                table[selected].notes.remove(value)
-            } else {
-                table[selected].notes.insert(value)
+        if !table[selected].isOrigin {
+            if table[selected].value != 0 {
+                table[selected].value = 0
+                table[selected].notes = [value]
+            } else if table[selected].value == 0 {
+                if table[selected].notes.contains(value) {
+                    table[selected].notes.remove(value)
+                } else {
+                    table[selected].notes.insert(value)
+                }
             }
         }
     }
 
     mutating func flipCard(_ index: Int) {
         if table[index].value == 0, table[index].notes.count == 1, let value = table[index].notes.first {
+            if index != selected {
+                selected = index
+            }
             table[index].value = value
+            lines.forEach {
+                table[$0].notes.remove(value)
+            }
         }
     }
 }

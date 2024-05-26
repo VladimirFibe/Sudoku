@@ -19,18 +19,15 @@ struct SudokuCell: View {
                 .padding(2)
             } else {
                 Text(sudoku.text)
-                    .font(.system(size: 24))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .aspectRatio(1, contentMode: .fit)
             }
         }
-        .overlay {
-            Rectangle().stroke()
-        }
+
     }
 }
 
 #Preview {
-    SudokuCell(sudoku: Sudoku(id: 0, value: 0))
+    SudokuCell(sudoku: Sudoku(id: 0, isOrigin: false, value: 1))
         .padding(100)
 }
