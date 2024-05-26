@@ -10,7 +10,7 @@ class SudokuTableViewModel: ObservableObject {
 
     func backgroundColor(index: Int) -> Color {
         index == brain.selected ? Color.selectedCell :
-        lines.contains(index) ? Color.selected : Color.white
+        lines.contains(index) ? Color.selected : Color(.systemBackground)
     }
 
     func buttonTapped(_ value: Int) {
@@ -27,6 +27,14 @@ class SudokuTableViewModel: ObservableObject {
 
     func gameDoubleTapped(_ index: Int) {
         brain.flipCard(index)
+    }
+
+    func restart() {
+        brain.restart()
+    }
+
+    func erase() {
+        brain.erase()
     }
 }
 

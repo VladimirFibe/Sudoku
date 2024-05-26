@@ -26,25 +26,52 @@ struct SudokuTableView: View {
             }
             .overlay(BackgroundView())
             .padding(4)
-            LazyVGrid(columns: Array(repeating: GridItem(spacing: 10), count: 3)) {
+            LazyVGrid(columns: Array(repeating: GridItem(spacing: 16), count: 3), spacing: 16) {
+                FuncButton(action: restart, image: "arrow.counterclockwise")
+                FuncButton(action: erase, image: "eraser")
+                FuncButton(action: {}, image: "info.circle")
                 ForEach(viewModel.digits) { digit in
                     Button(action: {
                         viewModel.buttonTapped(digit.id)
                     }) {
                         Text(digit.text)
-                            .font(.system(size: 24))
+                            .font(.system(size: 30))
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .aspectRatio(1, contentMode: .fit)
-                            .clipShape(Circle())
+                            .aspectRatio(5/3, contentMode: .fill)
+                            .clipShape(Capsule())
                             .overlay {
-                                Circle().stroke()
+                                Capsule().stroke()
                             }
                     }
                 }
 
             }
-            .padding(.horizontal, 100)
+            .padding(.horizontal, 16)
             Spacer()
+        }
+    }
+    func restart() {
+        viewModel.restart()
+    }
+
+    func erase() {
+        viewModel.erase()
+    }
+}
+
+struct FuncButton: View {
+    let action: () -> Void
+    let image: String
+    var body: some View {
+        Button(action: action) {
+            Image(systemName: image)
+                .font(.system(size: 30))
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .aspectRatio(5/3, contentMode: .fill)
+                .clipShape(Capsule())
+                .overlay {
+                    Capsule().stroke()
+                }
         }
     }
 }
