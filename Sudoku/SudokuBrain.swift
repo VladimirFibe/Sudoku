@@ -51,6 +51,15 @@ struct SudokuBrain {
         }
     }
 
+    mutating func setAndFlipCard(_ index: Int) {
+        if table[selected].value == 0, index == table[selected].solution {
+            table[selected].value = index
+            lines.forEach {
+                table[$0].notes.remove(index)
+            }
+        }
+    }
+
     mutating func restart(_ sudoku: SudokuPuzzle) {
         let puzzle = sudoku.puzzle.compactMap {$0.wholeNumberValue }
         let solution = sudoku.solution.compactMap {$0.wholeNumberValue}

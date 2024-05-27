@@ -2,6 +2,8 @@ import SwiftUI
 
 struct SudokuTableView: View {
     @StateObject var viewModel = SudokuTableViewModel()
+    @State private var showingAlert = false
+
     var columns = Array(repeating: GridItem(spacing: 0), count: 9)
 
     var body: some View {
@@ -41,6 +43,12 @@ struct SudokuTableView: View {
                                 Capsule().stroke()
                             }
                     }
+                    .highPriorityGesture(
+                        TapGesture(count: 2)
+                            .onEnded { _ in
+                                viewModel.flipCard(digit.id)
+                            }
+                    )
                     .disabled(viewModel.digitCount(digit.id) > 8)
                 }
 
@@ -49,9 +57,15 @@ struct SudokuTableView: View {
             Spacer()
         }
         .padding(4)
+        .alert("Start New Game", isPresented: $showingAlert) {
+            Button("Easy") {viewModel.getSudoku(30)}
+            Button("Medium") {viewModel.getSudoku(40)}
+            Button("Hard") {viewModel.getSudoku(50)}
+            Button("Cancel", role: .cancel) { }
+        }
     }
     func restart() {
-        viewModel.getSudoku()
+        showingAlert = true
     }
 
     func erase() {
