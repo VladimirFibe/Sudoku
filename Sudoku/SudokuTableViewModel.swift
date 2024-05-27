@@ -29,8 +29,11 @@ class SudokuTableViewModel: ObservableObject {
         brain.flipCard(index)
     }
 
-    func restart() {
-        brain.restart()
+    func getSudoku(_ zeros: Int) {
+        let game = Bundle.main.decode([SudokuPuzzle].self, from: "Sudoku.json")
+        let hard = game.filter { $0.zeros > zeros - 5 && $0.zeros < zeros + 5}
+        guard let puzzle = hard.randomElement() else { return }
+        brain.restart(puzzle)
     }
 
     func erase() {
@@ -39,6 +42,10 @@ class SudokuTableViewModel: ObservableObject {
 
     func digitCount(_ digit: Int) -> Int {
         brain.digitCount(digit)
+    }
+
+    func flipCard(_ index: Int) {
+        brain.setAndFlipCard(index)
     }
 }
 
