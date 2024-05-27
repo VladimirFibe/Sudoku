@@ -30,6 +30,6 @@ struct SudokuCell: View {
 }
 
 #Preview {
-    SudokuCell(sudoku: Sudoku(id: 0, isOrigin: false, value: 0, notes: [1, 2 ,3, 4, 5, 8, 9]), selectedDigit: 4)
+    SudokuCell(sudoku: Sudoku(id: 0, isOrigin: false, value: 0, solution: 1, notes: [1, 2 ,3, 4, 5, 8, 9]), selectedDigit: 4)
         .padding(100)
 }

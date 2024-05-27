@@ -24,7 +24,6 @@ struct SudokuTableView: View {
                 }
             }
             .overlay(BackgroundView())
-            .padding(4)
             LazyVGrid(columns: Array(repeating: GridItem(spacing: 16), count: 3), spacing: 16) {
                 FuncButton(action: restart, image: "arrow.counterclockwise")
                 FuncButton(action: erase, image: "eraser")
@@ -34,9 +33,9 @@ struct SudokuTableView: View {
                         viewModel.buttonTapped(digit.id)
                     }) {
                         Text(digit.text)
-                            .font(.system(size: 30))
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .aspectRatio(5/3, contentMode: .fill)
+                            .font(.system(size: 24))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 44)
                             .clipShape(Capsule())
                             .overlay {
                                 Capsule().stroke()
@@ -46,13 +45,13 @@ struct SudokuTableView: View {
                 }
 
             }
-            .padding(.horizontal, 16)
+            .padding(.horizontal, 12)
             Spacer()
         }
-        
+        .padding(4)
     }
     func restart() {
-        viewModel.restart()
+        viewModel.getSudoku()
     }
 
     func erase() {
@@ -66,9 +65,9 @@ struct FuncButton: View {
     var body: some View {
         Button(action: action) {
             Image(systemName: image)
-                .font(.system(size: 30))
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .aspectRatio(5/3, contentMode: .fill)
+                .font(.system(size: 24))
+                .frame(maxWidth: .infinity)
+                .frame(height: 44)
                 .clipShape(Capsule())
                 .overlay {
                     Capsule().stroke()

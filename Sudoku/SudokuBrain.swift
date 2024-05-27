@@ -7,9 +7,8 @@ struct SudokuBrain {
         table[selected].value
     }
     init() {
-        restart(sample)
+        restart(SudokuPuzzle.sample)
     }
-    var sample = [[0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 0, 0, 0, 2, 0, 0, 0, 0], [0, 9, 0, 1, 0, 0, 7, 0, 0], [0, 4, 0, 0, 0, 0, 6, 1, 9], [0, 0, 0, 0, 0, 0, 0, 0, 0], [7, 1, 0, 0, 0, 0, 8, 5, 0], [0, 0, 0, 0, 0, 8, 0, 0, 0], [1, 0, 0, 3, 0, 0, 0, 0, 0], [6, 0, 0, 0, 1, 7, 0, 0, 0]]
 
     var lines: Set<Int> = []
 
@@ -41,7 +40,7 @@ struct SudokuBrain {
     }
 
     mutating func flipCard(_ index: Int) {
-        if table[index].value == 0, table[index].notes.count == 1, let value = table[index].notes.first {
+        if table[index].value == 0, table[index].notes.count == 1, let value = table[index].notes.first, value == table[index].solution {
             if index != selected {
                 selected = index
             }
@@ -52,14 +51,13 @@ struct SudokuBrain {
         }
     }
 
-    mutating func restart(_ hard: [[Int]]) {
+    mutating func restart(_ sudoku: SudokuPuzzle) {
+        let puzzle = sudoku.puzzle.compactMap {$0.wholeNumberValue }
+        let solution = sudoku.solution.compactMap {$0.wholeNumberValue}
+        guard puzzle.count > 80, solution.count > 80 else { return }
         table.removeAll()
-        for i in 0..<9 {
-            for j in 0..<9 {
-                let value = hard[i][j]
-                let sudoku = Sudoku(id: 9*i+j, isOrigin: value != 0, value: value)
-                table.append(sudoku)
-            }
+        for i in 0..<81 {
+            table.append(Sudoku(id: i, isOrigin: puzzle[i] != 0, value: puzzle[i], solution: solution[i]))
         }
         prepareLines()
     }
