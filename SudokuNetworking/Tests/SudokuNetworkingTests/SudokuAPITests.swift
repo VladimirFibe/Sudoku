@@ -51,9 +51,47 @@ final class SudokuAPITests: XCTestCase {
     }
     
     func test_request_sudoku_failed() async {
-        StubProtocol.responseHandler = { _ in .failure(URLError(.badURL)) }
+        StubProtocol.responseHandler = { _ in .failure(CocoaError(.coreData)) }
         
         let result = await sut.newBoardSudoku()
+        
+        switch result {
+        case .success:
+            XCTFail()
+            
+        case .failure(let error):
+            XCTAssertEqual(error, .unknown)
+        }
+    }
+    
+    func test_request_dosuku_didStartLoading() async {
+        _ = await sut.newBoardDosuku()
+        
+        XCTAssertTrue(StubProtocol.didStartLoading)
+    }
+    
+    func test_request_dosuku_success() async {
+        StubProtocol.responseHandler = { _ in
+            Result
+                .success(mockDosukuBoard)
+                .tryMap(JSONEncoder().encode)
+        }
+        
+        let result = await sut.newBoardDosuku()
+        
+        switch result {
+        case .success(let board):
+            XCTAssertEqual(board, mockDosukuBoard)
+            
+        case .failure:
+            XCTFail()
+        }
+    }
+    
+    func test_request_dosuku_failed() async {
+        StubProtocol.responseHandler = { _ in .failure(CocoaError(.coreData)) }
+        
+        let result = await sut.newBoardDosuku()
         
         switch result {
         case .success:
@@ -110,4 +148,10 @@ private let mockSudokuBoard = SudokuBoard(
     date: Date(),
     rules: [],
     difficulty: []
+)
+
+private let mockDosukuBoard = DosukuBoard(
+    grids: [],
+    results: 0,
+    message: "baz"
 )

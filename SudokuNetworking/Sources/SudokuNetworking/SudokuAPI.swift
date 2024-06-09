@@ -27,24 +27,44 @@ public final class SudokuAPI {
     
     //MARK: - Public methods
     public func newBoardSudoku() async -> Result<SudokuBoard, SudokuError> {
-        await Endpoint
-            .newBoard_sudoku
-            .composeUrl()
-            .flatMap(Request.new(_:))
-            .setMethod(.GET)
-            .map(Result.success)
+        await request(.newBoard_sudoku)
+            .asyncMap(perform(request:))
             .value
-            .asyncTryMap(session.data(for:))
-            .tryMap(unwrapResponse)
-            .decode(SudokuBoard.self, decoder: decoder)
-            .mapError(SudokuError.map(_:))
+    }
+    
+    public func newBoardDosuku() async -> Result<DosukuBoard, SudokuError> {
+        await request(.newBoard_dosuku)
+            .asyncMap(perform(request:))
+            .value
     }
 }
 
 private extension SudokuAPI {
     typealias Response = (data: Data, response: URLResponse)
     
+    func request(_ endpoint: Endpoint, method: Request.HTTPMethod = .GET) -> Request {
+        endpoint
+            .composeUrl()
+            .flatMap(Request.new(_:))
+            .setMethod(method)
+    }
+    
+    func perform<T: Decodable>(request: URLRequest) async -> Result<T, SudokuError> {
+        await Result
+            .success(request)
+            .asyncTryMap(session.data(for:))
+            .tryMap(unwrapResponse)
+            .decode(T.self, decoder: decoder)
+            .mapError(SudokuError.map(_:))
+    }
+    
     func unwrapResponse(_ response: Response) throws -> Data {
+        guard let httpResponse = response.response as? HTTPURLResponse else {
+            preconditionFailure()
+        }
+        if let error = SudokuError(httpResponse.statusCode) {
+            throw error
+        }
         return response.data
     }
     
