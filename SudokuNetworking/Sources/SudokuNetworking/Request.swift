@@ -11,6 +11,9 @@ import SwiftFP
 typealias Request = Monad<URLRequest>
 
 extension Request {
+    @usableFromInline
+    enum HTTPMethod: String { case GET, POST, PUT, DELETE }
+    
     @inlinable
     func mutate(_ transform: (inout Wrapped) -> Void) -> Self {
         map { old in
@@ -24,6 +27,11 @@ extension Request {
     @inlinable
     static func new(_ url: URL) -> Self {
         Self(.init(url: url))
+    }
+    
+    @inlinable
+    func setMethod(_ m: HTTPMethod) -> Self {
+        mutate { $0.httpMethod = m.rawValue }
     }
     
     
