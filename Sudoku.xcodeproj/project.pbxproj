@@ -21,6 +21,9 @@
 		E8749ECA2BD0BFAD00BDA0F8 /* SudokuTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8749EC92BD0BFAD00BDA0F8 /* SudokuTableViewModel.swift */; };
 		E8A674402C02B76B002EFBBF /* SudokuBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A6743F2C02B76B002EFBBF /* SudokuBrain.swift */; };
 		E8A674422C02FC9F002EFBBF /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A674412C02FC9F002EFBBF /* BackgroundView.swift */; };
+		E8A674492C038440002EFBBF /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A674482C038440002EFBBF /* APIClient.swift */; };
+		E8A6744B2C040FAA002EFBBF /* Sudoku.json in Resources */ = {isa = PBXBuildFile; fileRef = E8A6744A2C040FAA002EFBBF /* Sudoku.json */; };
+		E8A6744D2C041645002EFBBF /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A6744C2C041645002EFBBF /* Bundle+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		E8A674452C03402A002EFBBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8A674462C034DBF002EFBBF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E8A674472C034DC9002EFBBF /* Screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot.png; sourceTree = "<group>"; };
+		E8A674482C038440002EFBBF /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		E8A6744A2C040FAA002EFBBF /* Sudoku.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Sudoku.json; sourceTree = "<group>"; };
+		E8A6744C2C041645002EFBBF /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +132,9 @@
 				E82A5F832BD0B0C700B15EB2 /* ContentView.swift */,
 				E8A674412C02FC9F002EFBBF /* BackgroundView.swift */,
 				E82A5F852BD0B0C700B15EB2 /* Item.swift */,
+				E8A674482C038440002EFBBF /* APIClient.swift */,
+				E8A6744A2C040FAA002EFBBF /* Sudoku.json */,
+				E8A6744C2C041645002EFBBF /* Bundle+Extension.swift */,
 				E82A5F872BD0B0C800B15EB2 /* Assets.xcassets */,
 				E82A5F892BD0B0C800B15EB2 /* Sudoku.entitlements */,
 				E82A5F8A2BD0B0C800B15EB2 /* Preview Content */,
@@ -264,6 +273,7 @@
 			files = (
 				E82A5F8C2BD0B0C800B15EB2 /* Preview Assets.xcassets in Resources */,
 				E82A5F882BD0B0C800B15EB2 /* Assets.xcassets in Resources */,
+				E8A6744B2C040FAA002EFBBF /* Sudoku.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +301,8 @@
 				E8A674422C02FC9F002EFBBF /* BackgroundView.swift in Sources */,
 				E82A5F842BD0B0C700B15EB2 /* ContentView.swift in Sources */,
 				E82A5F862BD0B0C700B15EB2 /* Item.swift in Sources */,
+				E8A6744D2C041645002EFBBF /* Bundle+Extension.swift in Sources */,
+				E8A674492C038440002EFBBF /* APIClient.swift in Sources */,
 				E8749EC42BD0BDFA00BDA0F8 /* Sudoku.swift in Sources */,
 				E8A674402C02B76B002EFBBF /* SudokuBrain.swift in Sources */,
 				E8749EC62BD0BE6C00BDA0F8 /* SudokuCell.swift in Sources */,
@@ -456,7 +468,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Sudoku/Sudoku.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 9;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Sudoku/Preview Content\"";
 				DEVELOPMENT_TEAM = 723HTEFHBA;
@@ -497,7 +509,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Sudoku/Sudoku.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 9;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Sudoku/Preview Content\"";
 				DEVELOPMENT_TEAM = 723HTEFHBA;

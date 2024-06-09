@@ -2,6 +2,8 @@ import SwiftUI
 
 struct SudokuTableView: View {
     @StateObject var viewModel = SudokuTableViewModel()
+    @State private var showingAlert = false
+
     var columns = Array(repeating: GridItem(spacing: 0), count: 9)
 
     var body: some View {
@@ -9,8 +11,7 @@ struct SudokuTableView: View {
             LazyVGrid(columns: columns, spacing: 0) {
                 ForEach(viewModel.table) { sudoku in
                     VStack {
-                        SudokuCell(sudoku: sudoku)
-                            .font(viewModel.cellFont(sudoku.value))
+                        SudokuCell(sudoku: sudoku, selectedDigit: viewModel.selectedDigit)
                             .background(viewModel.backgroundColor(index: sudoku.id))
                             .onTapGesture {
                                 viewModel.gameTapped(sudoku.id)
@@ -25,7 +26,6 @@ struct SudokuTableView: View {
                 }
             }
             .overlay(BackgroundView())
-            .padding(4)
             LazyVGrid(columns: Array(repeating: GridItem(spacing: 16), count: 3), spacing: 16) {
                 FuncButton(action: restart, image: "arrow.counterclockwise")
                 FuncButton(action: erase, image: "eraser")
@@ -35,23 +35,37 @@ struct SudokuTableView: View {
                         viewModel.buttonTapped(digit.id)
                     }) {
                         Text(digit.text)
-                            .font(.system(size: 30))
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .aspectRatio(5/3, contentMode: .fill)
+                            .font(.system(size: 24))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 44)
                             .clipShape(Capsule())
                             .overlay {
                                 Capsule().stroke()
                             }
                     }
+                    .highPriorityGesture(
+                        TapGesture(count: 2)
+                            .onEnded { _ in
+                                viewModel.flipCard(digit.id)
+                            }
+                    )
+                    .disabled(viewModel.digitCount(digit.id) > 8)
                 }
 
             }
-            .padding(.horizontal, 16)
+            .padding(.horizontal, 12)
             Spacer()
+        }
+        .padding(4)
+        .alert("Start New Game", isPresented: $showingAlert) {
+            Button("Easy") {viewModel.getSudoku(30)}
+            Button("Medium") {viewModel.getSudoku(40)}
+            Button("Hard") {viewModel.getSudoku(50)}
+            Button("Cancel", role: .cancel) { }
         }
     }
     func restart() {
-        viewModel.restart()
+        showingAlert = true
     }
 
     func erase() {
@@ -65,9 +79,9 @@ struct FuncButton: View {
     var body: some View {
         Button(action: action) {
             Image(systemName: image)
-                .font(.system(size: 30))
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .aspectRatio(5/3, contentMode: .fill)
+                .font(.system(size: 24))
+                .frame(maxWidth: .infinity)
+                .frame(height: 44)
                 .clipShape(Capsule())
                 .overlay {
                     Capsule().stroke()
