@@ -68,10 +68,18 @@ extension Endpoint {
     }
     
     //MARK: - Endpoints
-    static let newBoard = Endpoint
-        .new
+    
+    /// `sudoku-api.vercel.app` host
+    static let newBoard_dosuku = Endpoint.new
         .setScheme(.https)
         .setHost("sudoku-api.vercel.app")
         .setPath("api")
         .addSubPath("dosuku")
+    
+    /// `sudoku-game-and-api.netlify.app` host
+    static let newBoard_sudoku = Endpoint.new
+        .setScheme(.https)
+        .setHost("sudoku-game-and-api.netlify.app")
+        .setPath("api")
+        .addSubPath("sudoku")
 }

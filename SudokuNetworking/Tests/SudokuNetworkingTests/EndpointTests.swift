@@ -35,13 +35,22 @@ final class EndpointTests: XCTestCase {
             URL(string: "https://baz.bar/foo/baz?baz=bar")
         )
     }
-    
+
     func test_newBoard() {
-        let sut = Endpoint.newBoard
+        let sut = Endpoint.newBoard_dosuku
         
         XCTAssertEqual(
             sut.composeUrl().value,
             URL(string: "https://sudoku-api.vercel.app/api/dosuku")
+        )
+    }
+    
+    func test_newBoard_netlify() {
+        let sut = Endpoint.newBoard_sudoku
+        
+        XCTAssertEqual(
+            sut.composeUrl().value,
+            URL(string: "https://sudoku-game-and-api.netlify.app/api/sudoku")
         )
     }
 }
