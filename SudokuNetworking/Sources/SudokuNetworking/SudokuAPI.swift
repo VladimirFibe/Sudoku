@@ -7,7 +7,7 @@ import SwiftFP
 /// Так же, для более тонкой настройки, можно инициализировать экземпляр `SudokuAPI` с кастомным
 /// конфигом (`URLSessionConfiguration`) и/или механизмом логирования.
 ///
-/// Встроенный логер `SudokuAPI` возвращает словать с ключами: `"Object"`, `"Event"`  и `"Error"`.
+/// Встроенный логер `SudokuAPI` возвращает словать с ключами `LogKey` в виде строк : `"Object"`, `"Event"`  и `"Error"`.
 ///  - Object: содержит имя объекта `SudokuAPI`
 ///  - Event: текущий логируемый ивент
 ///  - Error: состояние объекта и/или текущего обрабатываемого ивента
@@ -40,12 +40,26 @@ public final class SudokuAPI {
         await request(.newBoard_sudoku)
             .asyncMap(perform(request:))
             .value
+            .decode(SudokuBoard.self, decoder: decoder)
+            .mapError(SudokuError.map(_:))
+
     }
     
     public func newBoardDosuku() async -> Result<DosukuBoard, SudokuError> {
         await request(.newBoard_dosuku)
             .asyncMap(perform(request:))
             .value
+            .decode(DosukuResponse.self, decoder: decoder)
+            .mapError(SudokuError.map(_:))
+            .map(\.newboard)
+    }
+}
+
+public extension SudokuAPI {
+    enum LogKey: String {
+        case Object
+        case Event
+        case Error
     }
 }
 
@@ -60,13 +74,11 @@ private extension SudokuAPI {
             .map(log(request:))
     }
     
-    func perform<T: Decodable>(request: URLRequest) async -> Result<T, SudokuError> {
+    func perform(request: URLRequest) async -> Result<Data, Error> {
         await Result
             .success(request)
             .asyncTryMap(session.data(for:))
             .tryMap(unwrapResponse)
-            .decode(T.self, decoder: decoder)
-            .mapError(SudokuError.map(_:))
     }
     
     func unwrapResponse(_ response: Response) throws -> Data {
@@ -106,9 +118,9 @@ private extension SudokuAPI {
     func log(event: String, error: Error? = nil) {
         logger?(
             [
-                "Object" : String(describing: self),
-                "Event" : event,
-                "Error" : String(reflecting: error)
+                LogKey.Object.rawValue : String(describing: self),
+                LogKey.Event.rawValue : event,
+                LogKey.Error.rawValue : String(reflecting: error)
             ]
         )
     }

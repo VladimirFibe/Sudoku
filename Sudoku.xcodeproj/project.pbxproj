@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8636FFD52C22226F00121540 /* SudokuNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 8636FFD42C22226F00121540 /* SudokuNetworking */; };
 		E82A5F822BD0B0C700B15EB2 /* SudokuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82A5F812BD0B0C700B15EB2 /* SudokuApp.swift */; };
 		E82A5F842BD0B0C700B15EB2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82A5F832BD0B0C700B15EB2 /* ContentView.swift */; };
 		E82A5F862BD0B0C700B15EB2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82A5F852BD0B0C700B15EB2 /* Item.swift */; };
@@ -76,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8636FFD52C22226F00121540 /* SudokuNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +98,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8636FFD32C22226F00121540 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E82A5F752BD0B0C700B15EB2 = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +115,7 @@
 				E82A5F942BD0B0C800B15EB2 /* SudokuTests */,
 				E82A5F9E2BD0B0C800B15EB2 /* SudokuUITests */,
 				E82A5F7F2BD0B0C700B15EB2 /* Products */,
+				8636FFD32C22226F00121540 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,6 +193,9 @@
 			dependencies = (
 			);
 			name = Sudoku;
+			packageProductDependencies = (
+				8636FFD42C22226F00121540 /* SudokuNetworking */,
+			);
 			productName = Sudoku;
 			productReference = E82A5F7E2BD0B0C700B15EB2 /* Sudoku.app */;
 			productType = "com.apple.product-type.application";
@@ -673,6 +686,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8636FFD42C22226F00121540 /* SudokuNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SudokuNetworking;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E82A5F762BD0B0C700B15EB2 /* Project object */;
 }

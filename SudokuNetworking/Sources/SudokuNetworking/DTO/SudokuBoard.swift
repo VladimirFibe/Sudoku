@@ -88,7 +88,7 @@ public struct SudokuBoard: Decodable, Equatable {
     public let easy: [[Int]]
     public let medium: [[Int]]
     public let hard: [[Int]]
-    public let date: Date
+    public let date: String
     public let rules: [String]
     public let difficulty: [String]
 }

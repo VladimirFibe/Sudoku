@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct DosukuResponse: Decodable {
+    let newboard: DosukuBoard
+}
+
 public struct DosukuBoard: Decodable, Equatable {
     public let grids: [Grid]
     public let results: Int

@@ -5,11 +5,15 @@
 //  Created by Илья Шаповалов on 26.05.2024.
 //
 
-import XCTest
+import Testing
+import Foundation
 @testable import SudokuNetworking
 
-final class EndpointTests: XCTestCase {
-    func test_configureEndpoint() {
+@Suite("Endpoint tests")
+struct EndpointTesting {
+    
+    @Test 
+    func configurations() async throws {
         let sut = Endpoint.new
             .setScheme(.https)
             .setHost("baz.bar")
@@ -18,39 +22,24 @@ final class EndpointTests: XCTestCase {
             .addQuery {
                 URLQueryItem(name: "baz", value: "bar")
             }
-        
-        XCTAssertEqual(sut.scheme, "https")
-        XCTAssertEqual(sut.host, "baz.bar")
-        XCTAssertEqual(sut.path, "/foo/baz")
-        XCTAssertEqual(
-            sut.queryItems,
-            [URLQueryItem(name: "baz", value: "bar")]
-        )
-        XCTAssertEqual(
-            sut.url,
-            URL(string: "https://baz.bar/foo/baz?baz=bar")
-        )
-        XCTAssertEqual(
-            sut.composeUrl().value,
-            URL(string: "https://baz.bar/foo/baz?baz=bar")
-        )
-    }
-
-    func test_newBoard() {
-        let sut = Endpoint.newBoard_dosuku
-        
-        XCTAssertEqual(
-            sut.composeUrl().value,
-            URL(string: "https://sudoku-api.vercel.app/api/dosuku")
-        )
+        #expect(sut.scheme == "https")
+        #expect(sut.host == "baz.bar")
+        #expect(sut.path == "/foo/baz")
+        #expect(sut.queryItems == [URLQueryItem(name: "baz", value: "bar")])
+        #expect(sut.composeUrl().absoluteString == "https://baz.bar/foo/baz?baz=bar")
     }
     
-    func test_newBoard_netlify() {
+    @Test
+    func newBoard() async throws {
+        let sut = Endpoint.newBoard_dosuku
+        
+        #expect(sut.composeUrl().absoluteString == "https://sudoku-api.vercel.app/api/dosuku")
+    }
+    
+    @Test
+    func test_newBoard_netlify() async throws {
         let sut = Endpoint.newBoard_sudoku
         
-        XCTAssertEqual(
-            sut.composeUrl().value,
-            URL(string: "https://sudoku-game-and-api.netlify.app/api/sudoku")
-        )
+        #expect(sut.composeUrl().absoluteString == "https://sudoku-game-and-api.netlify.app/api/sudoku")
     }
 }

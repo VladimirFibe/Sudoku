@@ -28,10 +28,10 @@ public enum SudokuError: Error, Equatable {
             return error
             
         case let error as URLError:
-            return .urlError(error.localizedDescription)
+            return .urlError(String(reflecting: error))
             
         case let error as DecodingError:
-            return .decodingError(error.localizedDescription)
+            return .decodingError(String(reflecting: error))
             
         default:
             return .unknown
