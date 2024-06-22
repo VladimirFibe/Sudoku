@@ -36,6 +36,11 @@ struct EndpointTesting {
         #expect(sut.composeUrl().absoluteString == "https://sudoku-api.vercel.app/api/dosuku")
     }
     
+    @Test(arguments: DosukuBoard.Difficulty.allCases)
+    func newBoardWith(difficulty: DosukuBoard.Difficulty) async throws {
+        
+    }
+    
     @Test
     func test_newBoard_netlify() async throws {
         let sut = Endpoint.newBoard_sudoku

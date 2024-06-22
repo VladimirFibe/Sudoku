@@ -18,13 +18,14 @@ let package = Package(
         .package(url: "https://github.com/ShapovalovIlya/SwiftFP.git", branch: "main")
     ],
     targets: [
+        .target(name: "GraphQLQueryBuilder"),
         .target(
             name: "SudokuNetworking",
             dependencies: [
-                .product(name: "SwiftFP", package: "SwiftFP")
+                .product(name: "SwiftFP", package: "SwiftFP"),
+                "GraphQLQueryBuilder"
             ]
         ),
-        .target(name: "GraphQLQueryBuilder"),
         .testTarget(
             name: "SudokuNetworkingTests",
             dependencies: [

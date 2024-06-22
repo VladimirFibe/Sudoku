@@ -6,7 +6,15 @@
 //
 
 import XCTest
+import Testing
 @testable import SudokuNetworking
+
+@Suite("Sudoku API manager tests")
+struct SudokuAPITests_NEW {
+    @Test func requestDosukuBoard() async throws {
+        
+    }
+}
 
 final class SudokuAPITests: XCTestCase {
     private var sut: SudokuAPI!

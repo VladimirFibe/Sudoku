@@ -10,6 +10,7 @@ import SwiftFP
 
 typealias Endpoint = Monad<URLComponents>
 
+
 extension Endpoint {
     @usableFromInline
     enum Scheme: String { case http, https }

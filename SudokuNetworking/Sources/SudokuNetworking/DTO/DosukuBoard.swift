@@ -18,7 +18,7 @@ public struct DosukuBoard: Decodable, Equatable {
 }
 
 public extension DosukuBoard {
-    enum Difficulty: String, Decodable {
+    enum Difficulty: String, Decodable, CaseIterable {
         case Easy
         case Medium
         case Hard
