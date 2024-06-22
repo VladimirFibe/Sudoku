@@ -24,8 +24,13 @@ let package = Package(
                 .product(name: "SwiftFP", package: "SwiftFP")
             ]
         ),
+        .target(name: "GraphQLQueryBuilder"),
         .testTarget(
             name: "SudokuNetworkingTests",
-            dependencies: ["SudokuNetworking"]),
+            dependencies: [
+                "SudokuNetworking",
+                "GraphQLQueryBuilder"
+            ]
+        ),
     ]
 )

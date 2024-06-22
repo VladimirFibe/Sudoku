@@ -31,6 +31,7 @@ public extension DosukuBoard {
     }
 }
 
+extension DosukuResponse: Encodable {}
 extension DosukuBoard: Encodable {}
 extension DosukuBoard.Difficulty: Encodable {}
 extension DosukuBoard.Grid: Encodable {}

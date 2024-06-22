@@ -73,7 +73,7 @@ final class SudokuAPITests: XCTestCase {
     func test_request_dosuku_success() async {
         StubProtocol.responseHandler = { _ in
             Result
-                .success(mockDosukuBoard)
+                .success(DosukuResponse(newboard: mockDosukuBoard))
                 .tryMap(JSONEncoder().encode)
         }
         
@@ -145,7 +145,7 @@ private let mockSudokuBoard = SudokuBoard(
     easy: [],
     medium: [],
     hard: [],
-    date: Date(),
+    date: "baz",
     rules: [],
     difficulty: []
 )
